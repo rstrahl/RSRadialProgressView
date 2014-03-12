@@ -22,6 +22,7 @@
 		9BBB6C5F18D0DE1A0029038F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BBB6C3E18D0DE190029038F /* UIKit.framework */; };
 		9BBB6C6718D0DE1A0029038F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB6C6518D0DE1A0029038F /* InfoPlist.strings */; };
 		9BBB6C6918D0DE1A0029038F /* RadialProgressBarDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBB6C6818D0DE1A0029038F /* RadialProgressBarDemoTests.m */; };
+		9BBB6C7418D0DEA80029038F /* RSRadialProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBB6C7318D0DEA80029038F /* RSRadialProgressView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		9BBB6C6418D0DE1A0029038F /* RadialProgressBarDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RadialProgressBarDemoTests-Info.plist"; sourceTree = "<group>"; };
 		9BBB6C6618D0DE1A0029038F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9BBB6C6818D0DE1A0029038F /* RadialProgressBarDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RadialProgressBarDemoTests.m; sourceTree = "<group>"; };
+		9BBB6C7218D0DEA80029038F /* RSRadialProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSRadialProgressView.h; sourceTree = "<group>"; };
+		9BBB6C7318D0DEA80029038F /* RSRadialProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSRadialProgressView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 				9BBB6C4A18D0DE190029038F /* AppDelegate.m */,
 				9BBB6C4C18D0DE190029038F /* Main_iPhone.storyboard */,
 				9BBB6C4F18D0DE190029038F /* Main_iPad.storyboard */,
+				9BBB6C7218D0DEA80029038F /* RSRadialProgressView.h */,
+				9BBB6C7318D0DEA80029038F /* RSRadialProgressView.m */,
 				9BBB6C5218D0DE190029038F /* ViewController.h */,
 				9BBB6C5318D0DE190029038F /* ViewController.m */,
 				9BBB6C5518D0DE1A0029038F /* Images.xcassets */,
@@ -256,6 +261,7 @@
 				9BBB6C5418D0DE190029038F /* ViewController.m in Sources */,
 				9BBB6C4B18D0DE190029038F /* AppDelegate.m in Sources */,
 				9BBB6C4718D0DE190029038F /* main.m in Sources */,
+				9BBB6C7418D0DEA80029038F /* RSRadialProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
