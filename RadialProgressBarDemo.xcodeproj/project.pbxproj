@@ -1,0 +1,485 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9BBB6C3B18D0DE190029038F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BBB6C3A18D0DE190029038F /* Foundation.framework */; };
+		9BBB6C3D18D0DE190029038F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BBB6C3C18D0DE190029038F /* CoreGraphics.framework */; };
+		9BBB6C3F18D0DE190029038F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BBB6C3E18D0DE190029038F /* UIKit.framework */; };
+		9BBB6C4518D0DE190029038F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB6C4318D0DE190029038F /* InfoPlist.strings */; };
+		9BBB6C4718D0DE190029038F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBB6C4618D0DE190029038F /* main.m */; };
+		9BBB6C4B18D0DE190029038F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBB6C4A18D0DE190029038F /* AppDelegate.m */; };
+		9BBB6C4E18D0DE190029038F /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB6C4C18D0DE190029038F /* Main_iPhone.storyboard */; };
+		9BBB6C5118D0DE190029038F /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB6C4F18D0DE190029038F /* Main_iPad.storyboard */; };
+		9BBB6C5418D0DE190029038F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBB6C5318D0DE190029038F /* ViewController.m */; };
+		9BBB6C5618D0DE1A0029038F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB6C5518D0DE1A0029038F /* Images.xcassets */; };
+		9BBB6C5D18D0DE1A0029038F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BBB6C5C18D0DE1A0029038F /* XCTest.framework */; };
+		9BBB6C5E18D0DE1A0029038F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BBB6C3A18D0DE190029038F /* Foundation.framework */; };
+		9BBB6C5F18D0DE1A0029038F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BBB6C3E18D0DE190029038F /* UIKit.framework */; };
+		9BBB6C6718D0DE1A0029038F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9BBB6C6518D0DE1A0029038F /* InfoPlist.strings */; };
+		9BBB6C6918D0DE1A0029038F /* RadialProgressBarDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBB6C6818D0DE1A0029038F /* RadialProgressBarDemoTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9BBB6C6018D0DE1A0029038F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9BBB6C2F18D0DE190029038F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9BBB6C3618D0DE190029038F;
+			remoteInfo = RadialProgressBarDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9BBB6C3718D0DE190029038F /* RadialProgressBarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadialProgressBarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BBB6C3A18D0DE190029038F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9BBB6C3C18D0DE190029038F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9BBB6C3E18D0DE190029038F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9BBB6C4218D0DE190029038F /* RadialProgressBarDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RadialProgressBarDemo-Info.plist"; sourceTree = "<group>"; };
+		9BBB6C4418D0DE190029038F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9BBB6C4618D0DE190029038F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9BBB6C4818D0DE190029038F /* RadialProgressBarDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RadialProgressBarDemo-Prefix.pch"; sourceTree = "<group>"; };
+		9BBB6C4918D0DE190029038F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9BBB6C4A18D0DE190029038F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9BBB6C4D18D0DE190029038F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		9BBB6C5018D0DE190029038F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		9BBB6C5218D0DE190029038F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9BBB6C5318D0DE190029038F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9BBB6C5518D0DE1A0029038F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9BBB6C5B18D0DE1A0029038F /* RadialProgressBarDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RadialProgressBarDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BBB6C5C18D0DE1A0029038F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		9BBB6C6418D0DE1A0029038F /* RadialProgressBarDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RadialProgressBarDemoTests-Info.plist"; sourceTree = "<group>"; };
+		9BBB6C6618D0DE1A0029038F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9BBB6C6818D0DE1A0029038F /* RadialProgressBarDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RadialProgressBarDemoTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9BBB6C3418D0DE190029038F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BBB6C3D18D0DE190029038F /* CoreGraphics.framework in Frameworks */,
+				9BBB6C3F18D0DE190029038F /* UIKit.framework in Frameworks */,
+				9BBB6C3B18D0DE190029038F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BBB6C5818D0DE1A0029038F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BBB6C5D18D0DE1A0029038F /* XCTest.framework in Frameworks */,
+				9BBB6C5F18D0DE1A0029038F /* UIKit.framework in Frameworks */,
+				9BBB6C5E18D0DE1A0029038F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9BBB6C2E18D0DE190029038F = {
+			isa = PBXGroup;
+			children = (
+				9BBB6C4018D0DE190029038F /* RadialProgressBarDemo */,
+				9BBB6C6218D0DE1A0029038F /* RadialProgressBarDemoTests */,
+				9BBB6C3918D0DE190029038F /* Frameworks */,
+				9BBB6C3818D0DE190029038F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9BBB6C3818D0DE190029038F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9BBB6C3718D0DE190029038F /* RadialProgressBarDemo.app */,
+				9BBB6C5B18D0DE1A0029038F /* RadialProgressBarDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9BBB6C3918D0DE190029038F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9BBB6C3A18D0DE190029038F /* Foundation.framework */,
+				9BBB6C3C18D0DE190029038F /* CoreGraphics.framework */,
+				9BBB6C3E18D0DE190029038F /* UIKit.framework */,
+				9BBB6C5C18D0DE1A0029038F /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9BBB6C4018D0DE190029038F /* RadialProgressBarDemo */ = {
+			isa = PBXGroup;
+			children = (
+				9BBB6C4918D0DE190029038F /* AppDelegate.h */,
+				9BBB6C4A18D0DE190029038F /* AppDelegate.m */,
+				9BBB6C4C18D0DE190029038F /* Main_iPhone.storyboard */,
+				9BBB6C4F18D0DE190029038F /* Main_iPad.storyboard */,
+				9BBB6C5218D0DE190029038F /* ViewController.h */,
+				9BBB6C5318D0DE190029038F /* ViewController.m */,
+				9BBB6C5518D0DE1A0029038F /* Images.xcassets */,
+				9BBB6C4118D0DE190029038F /* Supporting Files */,
+			);
+			path = RadialProgressBarDemo;
+			sourceTree = "<group>";
+		};
+		9BBB6C4118D0DE190029038F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9BBB6C4218D0DE190029038F /* RadialProgressBarDemo-Info.plist */,
+				9BBB6C4318D0DE190029038F /* InfoPlist.strings */,
+				9BBB6C4618D0DE190029038F /* main.m */,
+				9BBB6C4818D0DE190029038F /* RadialProgressBarDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9BBB6C6218D0DE1A0029038F /* RadialProgressBarDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				9BBB6C6818D0DE1A0029038F /* RadialProgressBarDemoTests.m */,
+				9BBB6C6318D0DE1A0029038F /* Supporting Files */,
+			);
+			path = RadialProgressBarDemoTests;
+			sourceTree = "<group>";
+		};
+		9BBB6C6318D0DE1A0029038F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9BBB6C6418D0DE1A0029038F /* RadialProgressBarDemoTests-Info.plist */,
+				9BBB6C6518D0DE1A0029038F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9BBB6C3618D0DE190029038F /* RadialProgressBarDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9BBB6C6C18D0DE1A0029038F /* Build configuration list for PBXNativeTarget "RadialProgressBarDemo" */;
+			buildPhases = (
+				9BBB6C3318D0DE190029038F /* Sources */,
+				9BBB6C3418D0DE190029038F /* Frameworks */,
+				9BBB6C3518D0DE190029038F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RadialProgressBarDemo;
+			productName = RadialProgressBarDemo;
+			productReference = 9BBB6C3718D0DE190029038F /* RadialProgressBarDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9BBB6C5A18D0DE1A0029038F /* RadialProgressBarDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9BBB6C6F18D0DE1A0029038F /* Build configuration list for PBXNativeTarget "RadialProgressBarDemoTests" */;
+			buildPhases = (
+				9BBB6C5718D0DE1A0029038F /* Sources */,
+				9BBB6C5818D0DE1A0029038F /* Frameworks */,
+				9BBB6C5918D0DE1A0029038F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9BBB6C6118D0DE1A0029038F /* PBXTargetDependency */,
+			);
+			name = RadialProgressBarDemoTests;
+			productName = RadialProgressBarDemoTests;
+			productReference = 9BBB6C5B18D0DE1A0029038F /* RadialProgressBarDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9BBB6C2F18D0DE190029038F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Rudi Strahl";
+				TargetAttributes = {
+					9BBB6C5A18D0DE1A0029038F = {
+						TestTargetID = 9BBB6C3618D0DE190029038F;
+					};
+				};
+			};
+			buildConfigurationList = 9BBB6C3218D0DE190029038F /* Build configuration list for PBXProject "RadialProgressBarDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9BBB6C2E18D0DE190029038F;
+			productRefGroup = 9BBB6C3818D0DE190029038F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9BBB6C3618D0DE190029038F /* RadialProgressBarDemo */,
+				9BBB6C5A18D0DE1A0029038F /* RadialProgressBarDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9BBB6C3518D0DE190029038F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BBB6C5118D0DE190029038F /* Main_iPad.storyboard in Resources */,
+				9BBB6C5618D0DE1A0029038F /* Images.xcassets in Resources */,
+				9BBB6C4E18D0DE190029038F /* Main_iPhone.storyboard in Resources */,
+				9BBB6C4518D0DE190029038F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BBB6C5918D0DE1A0029038F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BBB6C6718D0DE1A0029038F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9BBB6C3318D0DE190029038F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BBB6C5418D0DE190029038F /* ViewController.m in Sources */,
+				9BBB6C4B18D0DE190029038F /* AppDelegate.m in Sources */,
+				9BBB6C4718D0DE190029038F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BBB6C5718D0DE1A0029038F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BBB6C6918D0DE1A0029038F /* RadialProgressBarDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9BBB6C6118D0DE1A0029038F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9BBB6C3618D0DE190029038F /* RadialProgressBarDemo */;
+			targetProxy = 9BBB6C6018D0DE1A0029038F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9BBB6C4318D0DE190029038F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9BBB6C4418D0DE190029038F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9BBB6C4C18D0DE190029038F /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9BBB6C4D18D0DE190029038F /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		9BBB6C4F18D0DE190029038F /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9BBB6C5018D0DE190029038F /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		9BBB6C6518D0DE1A0029038F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9BBB6C6618D0DE1A0029038F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9BBB6C6A18D0DE1A0029038F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9BBB6C6B18D0DE1A0029038F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9BBB6C6D18D0DE1A0029038F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RadialProgressBarDemo/RadialProgressBarDemo-Prefix.pch";
+				INFOPLIST_FILE = "RadialProgressBarDemo/RadialProgressBarDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9BBB6C6E18D0DE1A0029038F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RadialProgressBarDemo/RadialProgressBarDemo-Prefix.pch";
+				INFOPLIST_FILE = "RadialProgressBarDemo/RadialProgressBarDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9BBB6C7018D0DE1A0029038F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RadialProgressBarDemo.app/RadialProgressBarDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RadialProgressBarDemo/RadialProgressBarDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "RadialProgressBarDemoTests/RadialProgressBarDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		9BBB6C7118D0DE1A0029038F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RadialProgressBarDemo.app/RadialProgressBarDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RadialProgressBarDemo/RadialProgressBarDemo-Prefix.pch";
+				INFOPLIST_FILE = "RadialProgressBarDemoTests/RadialProgressBarDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9BBB6C3218D0DE190029038F /* Build configuration list for PBXProject "RadialProgressBarDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9BBB6C6A18D0DE1A0029038F /* Debug */,
+				9BBB6C6B18D0DE1A0029038F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9BBB6C6C18D0DE1A0029038F /* Build configuration list for PBXNativeTarget "RadialProgressBarDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9BBB6C6D18D0DE1A0029038F /* Debug */,
+				9BBB6C6E18D0DE1A0029038F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9BBB6C6F18D0DE1A0029038F /* Build configuration list for PBXNativeTarget "RadialProgressBarDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9BBB6C7018D0DE1A0029038F /* Debug */,
+				9BBB6C7118D0DE1A0029038F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9BBB6C2F18D0DE190029038F /* Project object */;
+}
