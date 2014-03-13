@@ -50,7 +50,7 @@ static const CGFloat kProgressLineWidth = 4.0f;
     // Draw track
     CGFloat trackRadius = (self.frame.size.width - 2*kTrackLineWidth) / 2;
     CGPoint centerPointInView = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
-    CGFloat trackEndAngle = self.startAngle - 1;
+    CGFloat trackEndAngle = _startAngle + 360;
     UIBezierPath *trackPath = [UIBezierPath bezierPathWithArcCenter:centerPointInView
                                                              radius:trackRadius
                                                          startAngle:DEGREES_TO_RADIANS(_startAngle)
@@ -62,7 +62,7 @@ static const CGFloat kProgressLineWidth = 4.0f;
 
     // Draw progress
     CGFloat progressRadius = (self.frame.size.width - 2*kProgressLineWidth + 1) / 2;
-    CGFloat progressEndAngle = (_progress > 0) ? (_progress * _startAngle) - 1 : trackEndAngle;
+    CGFloat progressEndAngle = _startAngle + (360 * _progress);
     UIBezierPath *progressPath = [UIBezierPath bezierPathWithArcCenter:centerPointInView
                                                              radius:progressRadius
                                                          startAngle:DEGREES_TO_RADIANS(_startAngle)
