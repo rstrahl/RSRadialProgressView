@@ -25,6 +25,7 @@ typedef enum
 @property (strong, nonatomic) UIColor *unitLabelTintColor;
 @property (strong, nonatomic) UIColor *progressTintColor;
 @property (strong, nonatomic) UIColor *trackTintColor;
+@property (strong, nonatomic) UIView *labelsView;
 @property (assign, nonatomic) float progress;
 @property (assign, nonatomic) BOOL clockwise;
 @property (assign, nonatomic) CGFloat startAngle;
