@@ -112,7 +112,7 @@ CGSize maximumLabelRectSize;
     [_percentLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_percentLabel setAdjustsFontSizeToFitWidth:YES];
     [_percentLabel setTextAlignment:NSTextAlignmentCenter];
-    _percentLabel.hidden = (_style == RSRadialProgressViewStylePercent);
+    _percentLabel.hidden = (_style == RSRadialProgressViewStyleValue);
     [_labelsView addSubview:_percentLabel];
     [_labelsView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[_progressLabel]-0-[_percentLabel]"
                                                                         options:0
@@ -132,7 +132,7 @@ CGSize maximumLabelRectSize;
     [_unitsLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_unitsLabel setAdjustsFontSizeToFitWidth:YES];
     [_unitsLabel setTextAlignment:NSTextAlignmentCenter];
-    _unitsLabel.hidden = (_style == RSRadialProgressViewStyleValue);
+    _unitsLabel.hidden = (_style == RSRadialProgressViewStylePercent);
     [_labelsView addSubview:_unitsLabel];
     [_labelsView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_progressLabel]-0-[_unitsLabel]"
                                                                         options:0
