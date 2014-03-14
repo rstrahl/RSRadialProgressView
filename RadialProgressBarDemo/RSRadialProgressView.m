@@ -46,7 +46,7 @@ CGSize maximumLabelRectSize;
     // Add label container
     _labelsView = [[UIView alloc] init];
     [_labelsView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    _labelsView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+    [self addSubview:_labelsView];
     NSLayoutConstraint *centerConstraintX = [NSLayoutConstraint constraintWithItem:_labelsView
                                                                         attribute:NSLayoutAttributeCenterX
                                                                         relatedBy:NSLayoutRelationEqual
@@ -79,13 +79,13 @@ CGSize maximumLabelRectSize;
     [self addConstraint:centerConstraintY];
     [self addConstraint:heightConstraint];
     [self addConstraint:widthConstraint];
-    [self addSubview:_labelsView];
     
     // Add progress label
     _progressLabel = [[UILabel alloc] init];
     [_progressLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_progressLabel setAdjustsFontSizeToFitWidth:YES];
     [_progressLabel setTextAlignment:NSTextAlignmentCenter];
+    [_labelsView addSubview:_progressLabel];
     NSLayoutConstraint *centerProgressX = [NSLayoutConstraint constraintWithItem:_progressLabel
                                                                          attribute:NSLayoutAttributeCenterX
                                                                          relatedBy:NSLayoutRelationEqual
@@ -100,25 +100,8 @@ CGSize maximumLabelRectSize;
                                                                          attribute:NSLayoutAttributeCenterY
                                                                         multiplier:1
                                                                           constant:0];
-    NSLayoutConstraint *heightProgress = [NSLayoutConstraint constraintWithItem:_progressLabel
-                                                                        attribute:NSLayoutAttributeHeight
-                                                                        relatedBy:NSLayoutRelationEqual
-                                                                           toItem:_labelsView
-                                                                        attribute:NSLayoutAttributeHeight
-                                                                       multiplier:1
-                                                                         constant:0];
-    NSLayoutConstraint *widthProgress = [NSLayoutConstraint constraintWithItem:_progressLabel
-                                                                       attribute:NSLayoutAttributeWidth
-                                                                       relatedBy:NSLayoutRelationEqual
-                                                                          toItem:_labelsView
-                                                                       attribute:NSLayoutAttributeWidth
-                                                                      multiplier:1
-                                                                        constant:0];
     [_labelsView addConstraint:centerProgressX];
     [_labelsView addConstraint:centerProgressY];
-    [_labelsView addConstraint:heightProgress];
-    [_labelsView addConstraint:widthProgress];
-    [_labelsView addSubview:_progressLabel];
 }
 
 - (void)drawRect:(CGRect)rect
@@ -152,6 +135,12 @@ CGSize maximumLabelRectSize;
     [progressPath stroke];
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [_progressLabel sizeToFit];
+}
+
 #pragma mark - Property Overrides
 
 - (void)setProgress:(float)progress
@@ -162,7 +151,7 @@ CGSize maximumLabelRectSize;
 - (void)setProgress:(float)progress animated:(BOOL)animated
 {
     _progress = progress;
-    _progressLabel.text = [NSString stringWithFormat:@"%.2d%%", (int)(_progress * 100)];
+    _progressLabel.text = [NSString stringWithFormat:@"%.2d", (int)(_progress * 100)];
     [self setNeedsDisplay];
 }
 
