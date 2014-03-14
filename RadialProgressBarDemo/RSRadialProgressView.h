@@ -10,8 +10,8 @@
 
 typedef enum
 {
-    RSRadialProgressViewStyleValue,
-    RSRadialProgressViewStylePercent
+    RSRadialProgressViewStylePercent,
+    RSRadialProgressViewStyleValue
 } RSRadialProgressViewStyle;
 
 #define DEGREES_TO_RADIANS(degrees)  ((M_PI * degrees) / 180)
@@ -29,6 +29,7 @@ typedef enum
 @property (assign, nonatomic) float progress;
 @property (assign, nonatomic) BOOL clockwise;
 @property (assign, nonatomic) CGFloat startAngle;
+@property (assign, nonatomic) RSRadialProgressViewStyle style;
 
 - (void)setProgress:(float)progress animated:(BOOL)animated;
 

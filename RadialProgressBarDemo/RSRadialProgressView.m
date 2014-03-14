@@ -15,15 +15,20 @@ static const CGFloat kProgressLineWidth = 4.0f;
 
 CGSize maximumLabelRectSize;
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame style:(RSRadialProgressViewStyle)style
 {
     self = [super initWithFrame:frame];
     if (self)
     {
-        // Initialization code
+        _style = style;
         [self setupDefaults];
     }
     return self;
+}
+
+- (id)initWithFrame:(CGRect)frame
+{
+    return [self initWithFrame:frame style:RSRadialProgressViewStylePercent];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -82,6 +87,7 @@ CGSize maximumLabelRectSize;
     
     // Add progress label
     _progressLabel = [[UILabel alloc] init];
+    _progressLabel.backgroundColor = [UIColor colorWithRed:0.0f green:1.0f blue:0.0f alpha:0.5f];
     [_progressLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_progressLabel setAdjustsFontSizeToFitWidth:YES];
     [_progressLabel setTextAlignment:NSTextAlignmentCenter];
@@ -100,8 +106,31 @@ CGSize maximumLabelRectSize;
                                                                          attribute:NSLayoutAttributeCenterY
                                                                         multiplier:1
                                                                           constant:0];
+
     [_labelsView addConstraint:centerProgressX];
     [_labelsView addConstraint:centerProgressY];
+    
+    
+    // Add units label
+    _unitsLabel = [[UILabel alloc] init];
+    _unitsLabel.text = @"UNITS";
+    _unitsLabel.backgroundColor = [UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.5f];
+    [_unitsLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_unitsLabel setAdjustsFontSizeToFitWidth:YES];
+    [_unitsLabel setTextAlignment:NSTextAlignmentCenter];
+    [_labelsView addSubview:_unitsLabel];
+    [_labelsView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_progressLabel]-0-[_unitsLabel]"
+                                                                        options:0
+                                                                        metrics:nil
+                                                                          views:NSDictionaryOfVariableBindings(_progressLabel, _unitsLabel)]];
+    [_labelsView addConstraint:[NSLayoutConstraint constraintWithItem:_unitsLabel
+                                                            attribute:NSLayoutAttributeCenterX
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:_progressLabel
+                                                            attribute:NSLayoutAttributeCenterX
+                                                           multiplier:1
+                                                             constant:0]];
+    
 }
 
 - (void)drawRect:(CGRect)rect
@@ -139,6 +168,15 @@ CGSize maximumLabelRectSize;
 {
     [super layoutSubviews];
     [_progressLabel sizeToFit];
+    [_unitsLabel sizeToFit];
+    if (_unitsLabel.text.length == 0 && _unitsLabel.hidden == NO)
+    {
+        _unitsLabel.hidden = YES;
+    }
+    else if (_unitsLabel.text.length > 0 && _unitsLabel.hidden == YES)
+    {
+        _unitsLabel.hidden = NO;
+    }
 }
 
 #pragma mark - Property Overrides
@@ -151,8 +189,11 @@ CGSize maximumLabelRectSize;
 - (void)setProgress:(float)progress animated:(BOOL)animated
 {
     _progress = progress;
-    _progressLabel.text = [NSString stringWithFormat:@"%.2d", (int)(_progress * 100)];
-    [self setNeedsDisplay];
+    if (_style == RSRadialProgressViewStylePercent)
+    {
+        _progressLabel.text = [NSString stringWithFormat:@"%.2d", (int)(_progress * 100)];
+        [self setNeedsDisplay];
+    }
 }
 
 @end
