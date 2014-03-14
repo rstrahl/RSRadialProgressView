@@ -87,37 +87,52 @@ CGSize maximumLabelRectSize;
     
     // Add progress label
     _progressLabel = [[UILabel alloc] init];
-    _progressLabel.backgroundColor = [UIColor colorWithRed:0.0f green:1.0f blue:0.0f alpha:0.5f];
     [_progressLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_progressLabel setAdjustsFontSizeToFitWidth:YES];
     [_progressLabel setTextAlignment:NSTextAlignmentCenter];
     [_labelsView addSubview:_progressLabel];
-    NSLayoutConstraint *centerProgressX = [NSLayoutConstraint constraintWithItem:_progressLabel
-                                                                         attribute:NSLayoutAttributeCenterX
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:_labelsView
-                                                                         attribute:NSLayoutAttributeCenterX
-                                                                        multiplier:1
-                                                                          constant:0];
-    NSLayoutConstraint *centerProgressY = [NSLayoutConstraint constraintWithItem:_progressLabel
-                                                                         attribute:NSLayoutAttributeCenterY
-                                                                         relatedBy:NSLayoutRelationEqual
-                                                                            toItem:_labelsView
-                                                                         attribute:NSLayoutAttributeCenterY
-                                                                        multiplier:1
-                                                                          constant:0];
-
-    [_labelsView addConstraint:centerProgressX];
-    [_labelsView addConstraint:centerProgressY];
+    [_labelsView addConstraint:[NSLayoutConstraint constraintWithItem:_progressLabel
+                                                            attribute:NSLayoutAttributeCenterX
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:_labelsView
+                                                            attribute:NSLayoutAttributeCenterX
+                                                           multiplier:1
+                                                             constant:0]];
+    [_labelsView addConstraint:[NSLayoutConstraint constraintWithItem:_progressLabel
+                                                            attribute:NSLayoutAttributeCenterY
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:_labelsView
+                                                            attribute:NSLayoutAttributeCenterY
+                                                           multiplier:1
+                                                             constant:0]];
     
+    // Add percentage symbol label
+    _percentLabel = [[UILabel alloc] init];
+    _percentLabel.text = @"%";
+    [_percentLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_percentLabel setAdjustsFontSizeToFitWidth:YES];
+    [_percentLabel setTextAlignment:NSTextAlignmentCenter];
+    _percentLabel.hidden = (_style == RSRadialProgressViewStylePercent);
+    [_labelsView addSubview:_percentLabel];
+    [_labelsView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[_progressLabel]-0-[_percentLabel]"
+                                                                        options:0
+                                                                        metrics:nil
+                                                                          views:NSDictionaryOfVariableBindings(_progressLabel, _percentLabel)]];
+    [_labelsView addConstraint:[NSLayoutConstraint constraintWithItem:_percentLabel
+                                                            attribute:NSLayoutAttributeBaseline
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:_progressLabel
+                                                            attribute:NSLayoutAttributeBaseline
+                                                           multiplier:1
+                                                             constant:0]];
     
     // Add units label
     _unitsLabel = [[UILabel alloc] init];
     _unitsLabel.text = @"UNITS";
-    _unitsLabel.backgroundColor = [UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.5f];
     [_unitsLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_unitsLabel setAdjustsFontSizeToFitWidth:YES];
     [_unitsLabel setTextAlignment:NSTextAlignmentCenter];
+    _unitsLabel.hidden = (_style == RSRadialProgressViewStyleValue);
     [_labelsView addSubview:_unitsLabel];
     [_labelsView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_progressLabel]-0-[_unitsLabel]"
                                                                         options:0
@@ -169,14 +184,6 @@ CGSize maximumLabelRectSize;
     [super layoutSubviews];
     [_progressLabel sizeToFit];
     [_unitsLabel sizeToFit];
-    if (_unitsLabel.text.length == 0 && _unitsLabel.hidden == NO)
-    {
-        _unitsLabel.hidden = YES;
-    }
-    else if (_unitsLabel.text.length > 0 && _unitsLabel.hidden == YES)
-    {
-        _unitsLabel.hidden = NO;
-    }
 }
 
 #pragma mark - Property Overrides
