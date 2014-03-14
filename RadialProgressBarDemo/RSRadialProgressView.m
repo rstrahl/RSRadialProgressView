@@ -46,7 +46,7 @@ CGSize maximumLabelRectSize;
     _clockwise = YES;
     _startAngle = 270;
     _progress = 0;
-    _progressTintColor = self.trackTintColor = self.progressLabelTintColor = self.unitLabelTintColor = [UIColor blackColor];
+    _progressTintColor = self.trackTintColor = [UIColor blackColor];
     
     // Add label container
     _labelsView = [[UIView alloc] init];
