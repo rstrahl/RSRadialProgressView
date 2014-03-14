@@ -10,8 +10,8 @@
 
 typedef enum
 {
-    RSRadialProgressViewStyleValue,
-    RSRadialProgressViewStylePercent
+    RSRadialProgressViewStylePercent,
+    RSRadialProgressViewStyleValue
 } RSRadialProgressViewStyle;
 
 #define DEGREES_TO_RADIANS(degrees)  ((M_PI * degrees) / 180)
@@ -19,15 +19,16 @@ typedef enum
 @interface RSRadialProgressView : UIView
 
 @property (strong, nonatomic) UILabel *progressLabel;
+@property (strong, nonatomic) UILabel *percentLabel;
 @property (strong, nonatomic) UILabel *unitsLabel;
 @property (strong, nonatomic) UIImage *image;
-@property (strong, nonatomic) UIColor *progressLabelTintColor;
-@property (strong, nonatomic) UIColor *unitLabelTintColor;
 @property (strong, nonatomic) UIColor *progressTintColor;
 @property (strong, nonatomic) UIColor *trackTintColor;
+@property (strong, nonatomic) UIView *labelsView;
 @property (assign, nonatomic) float progress;
 @property (assign, nonatomic) BOOL clockwise;
 @property (assign, nonatomic) CGFloat startAngle;
+@property (assign, nonatomic) RSRadialProgressViewStyle style;
 
 - (void)setProgress:(float)progress animated:(BOOL)animated;
 
