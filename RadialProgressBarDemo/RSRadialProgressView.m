@@ -48,6 +48,12 @@ CGSize maximumLabelRectSize;
     _progress = 0;
     _progressTintColor = self.trackTintColor = [UIColor blackColor];
     
+    // Add track/progress layers
+    _trackLayer = [CAShapeLayer layer];
+    [self.layer addSublayer:_trackLayer];
+    _progressLayer = [CAShapeLayer layer];
+    [self.layer addSublayer:_progressLayer];
+    
     // Add label container
     _labelsView = [[UIView alloc] init];
     [_labelsView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -148,42 +154,42 @@ CGSize maximumLabelRectSize;
     
 }
 
-- (void)drawRect:(CGRect)rect
+- (void)layoutSubviews
 {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, [[UIColor clearColor] CGColor]);
+    [super layoutSubviews];
+    [_progressLabel sizeToFit];
+    [_unitsLabel sizeToFit];
     
-    // Draw track
-    CGFloat trackRadius = (self.frame.size.width - 2*kTrackLineWidth) / 2;
+    // Re-calculate the track path and update
     CGPoint centerPointInView = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    CGFloat trackRadius = (self.frame.size.width - 2*kTrackLineWidth) / 2;
     CGFloat trackEndAngle = _startAngle + 360;
     UIBezierPath *trackPath = [UIBezierPath bezierPathWithArcCenter:centerPointInView
                                                              radius:trackRadius
                                                          startAngle:DEGREES_TO_RADIANS(_startAngle)
                                                            endAngle:DEGREES_TO_RADIANS(trackEndAngle)
                                                           clockwise:self.clockwise];
-    CGContextSetStrokeColorWithColor(context, [_trackTintColor CGColor]);
-    [trackPath setLineWidth:kTrackLineWidth];
-    [trackPath stroke];
-
-    // Draw progress
-    CGFloat progressRadius = (self.frame.size.width - 2*kProgressLineWidth + 1) / 2;
-    CGFloat progressEndAngle = _startAngle + (360 * _progress);
-    UIBezierPath *progressPath = [UIBezierPath bezierPathWithArcCenter:centerPointInView
-                                                             radius:progressRadius
-                                                         startAngle:DEGREES_TO_RADIANS(_startAngle)
-                                                           endAngle:DEGREES_TO_RADIANS(progressEndAngle)
-                                                          clockwise:self.clockwise];
-    CGContextSetStrokeColorWithColor(context, [_trackTintColor CGColor]);
-    [progressPath setLineWidth:kProgressLineWidth];
-    [progressPath stroke];
+    _trackLayer.path = trackPath.CGPath;
+    _progressLayer.path = trackPath.CGPath;
+    
+#warning CODE REVIEW - Refactor these into setter overrides, shouldn't belong here
+    [_trackLayer setLineWidth:kTrackLineWidth];
+    [_trackLayer setStrokeColor:[_trackTintColor CGColor]];
+    [_trackLayer setFillColor:[[UIColor clearColor] CGColor]];
+    [_progressLayer setLineWidth:kProgressLineWidth];
+    [_progressLayer setStrokeColor:[_progressTintColor CGColor]];
+    [_progressLayer setFillColor:[[UIColor clearColor] CGColor]];
 }
 
-- (void)layoutSubviews
+#pragma mark - Drawing/Animation
+
+- (void)startProgressTrackAnimationFromValue:(CGFloat)fromValue toValue:(CGFloat)toValue duration:(CGFloat)duration
 {
-    [super layoutSubviews];
-    [_progressLabel sizeToFit];
-    [_unitsLabel sizeToFit];
+    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    pathAnimation.duration = duration;
+    pathAnimation.fromValue = @(fromValue);
+    pathAnimation.toValue = @(toValue);
+    [_progressLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
 }
 
 #pragma mark - Property Overrides
@@ -195,12 +201,22 @@ CGSize maximumLabelRectSize;
 
 - (void)setProgress:(float)progress animated:(BOOL)animated
 {
-    _progress = progress;
+    if (animated)
+    {
+        [self startProgressTrackAnimationFromValue:_progress toValue:progress duration:1.0f];
+    }
+    else
+    {
+        [CATransaction begin];
+        [CATransaction setDisableActions:YES];
+        [_progressLayer setValue:@(progress) forKeyPath:@"strokeEnd"];
+        [CATransaction commit];
+    }
     if (_style == RSRadialProgressViewStylePercent)
     {
-        _progressLabel.text = [NSString stringWithFormat:@"%.2d", (int)(_progress * 100)];
-        [self setNeedsDisplay];
+        _progressLabel.text = [NSString stringWithFormat:@"%.2d", (int)(progress * 100)];
     }
+    _progress = progress;
 }
 
 @end

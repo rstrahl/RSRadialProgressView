@@ -18,6 +18,8 @@ typedef enum
 
 @interface RSRadialProgressView : UIView
 
+@property (strong, nonatomic) CAShapeLayer *trackLayer;
+@property (strong, nonatomic) CAShapeLayer *progressLayer;
 @property (strong, nonatomic) UILabel *progressLabel;
 @property (strong, nonatomic) UILabel *percentLabel;
 @property (strong, nonatomic) UILabel *unitsLabel;
