@@ -50,8 +50,12 @@ CGSize maximumLabelRectSize;
     
     // Add track/progress layers
     _trackLayer = [CAShapeLayer layer];
+    [_trackLayer setLineWidth:kTrackLineWidth];
+    [_trackLayer setFillColor:[[UIColor clearColor] CGColor]];
     [self.layer addSublayer:_trackLayer];
     _progressLayer = [CAShapeLayer layer];
+    [_progressLayer setLineWidth:kProgressLineWidth];
+    [_progressLayer setFillColor:[[UIColor clearColor] CGColor]];
     [self.layer addSublayer:_progressLayer];
     
     // Add label container
@@ -169,15 +173,6 @@ CGSize maximumLabelRectSize;
                                                           clockwise:self.clockwise];
     _trackLayer.path = trackPath.CGPath;
     _progressLayer.path = trackPath.CGPath;
-    
-#warning CODE REVIEW - Refactor these into setter overrides, shouldn't belong here
-    [_trackLayer setLineWidth:kTrackLineWidth];
-    [_trackLayer setStrokeColor:[_trackTintColor CGColor]];
-    [_trackLayer setFillColor:[[UIColor clearColor] CGColor]];
-    [_progressLayer setLineWidth:kProgressLineWidth];
-    [_progressLayer setStrokeColor:[_progressTintColor CGColor]];
-    [_progressLayer setFillColor:[[UIColor clearColor] CGColor]];
-    
     [self updateLabels];
 }
 
@@ -190,6 +185,18 @@ CGSize maximumLabelRectSize;
 }
 
 #pragma mark - Property Overrides
+
+- (void)setProgressTintColor:(UIColor *)progressTintColor
+{
+    _progressTintColor = progressTintColor;
+    [_progressLayer setStrokeColor:[_progressTintColor CGColor]];
+}
+
+- (void)setTrackTintColor:(UIColor *)trackTintColor
+{
+    _trackTintColor = trackTintColor;
+    [_trackLayer setStrokeColor:[_trackTintColor CGColor]];
+}
 
 - (void)setProgress:(float)progress
 {
