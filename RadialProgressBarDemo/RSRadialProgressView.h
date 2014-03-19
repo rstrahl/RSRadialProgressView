@@ -8,16 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum
+typedef NS_ENUM(NSUInteger, RSRadialProgressViewStyle)
 {
     RSRadialProgressViewStylePercent,
     RSRadialProgressViewStyleValue
-} RSRadialProgressViewStyle;
+};
 
 #define DEGREES_TO_RADIANS(degrees)  ((M_PI * degrees) / 180)
 
 @interface RSRadialProgressView : UIView
 
+@property (strong, nonatomic) CAShapeLayer *trackLayer;
+@property (strong, nonatomic) CAShapeLayer *progressLayer;
 @property (strong, nonatomic) UILabel *progressLabel;
 @property (strong, nonatomic) UILabel *percentLabel;
 @property (strong, nonatomic) UILabel *unitsLabel;

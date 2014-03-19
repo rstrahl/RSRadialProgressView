@@ -48,6 +48,12 @@ CGSize maximumLabelRectSize;
     _progress = 0;
     _progressTintColor = self.trackTintColor = [UIColor blackColor];
     
+    // Add track/progress layers
+    _trackLayer = [CAShapeLayer layer];
+    [self.layer addSublayer:_trackLayer];
+    _progressLayer = [CAShapeLayer layer];
+    [self.layer addSublayer:_progressLayer];
+    
     // Add label container
     _labelsView = [[UIView alloc] init];
     [_labelsView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -112,7 +118,6 @@ CGSize maximumLabelRectSize;
     [_percentLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_percentLabel setAdjustsFontSizeToFitWidth:YES];
     [_percentLabel setTextAlignment:NSTextAlignmentCenter];
-    _percentLabel.hidden = (_style == RSRadialProgressViewStyleValue);
     [_labelsView addSubview:_percentLabel];
     [_labelsView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[_progressLabel]-0-[_percentLabel]"
                                                                         options:0
@@ -132,7 +137,6 @@ CGSize maximumLabelRectSize;
     [_unitsLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_unitsLabel setAdjustsFontSizeToFitWidth:YES];
     [_unitsLabel setTextAlignment:NSTextAlignmentCenter];
-    _unitsLabel.hidden = (_style == RSRadialProgressViewStylePercent);
     [_labelsView addSubview:_unitsLabel];
     [_labelsView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_progressLabel]-0-[_unitsLabel]"
                                                                         options:0
@@ -148,42 +152,41 @@ CGSize maximumLabelRectSize;
     
 }
 
-- (void)drawRect:(CGRect)rect
+- (void)layoutSubviews
 {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, [[UIColor clearColor] CGColor]);
+    [super layoutSubviews];
+    [_progressLabel sizeToFit];
+    [_unitsLabel sizeToFit];
     
-    // Draw track
-    CGFloat trackRadius = (self.frame.size.width - 2*kTrackLineWidth) / 2;
+    // Re-calculate the track path and update
     CGPoint centerPointInView = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    CGFloat trackRadius = (self.frame.size.width - 2*kTrackLineWidth) / 2;
     CGFloat trackEndAngle = _startAngle + 360;
     UIBezierPath *trackPath = [UIBezierPath bezierPathWithArcCenter:centerPointInView
                                                              radius:trackRadius
                                                          startAngle:DEGREES_TO_RADIANS(_startAngle)
                                                            endAngle:DEGREES_TO_RADIANS(trackEndAngle)
                                                           clockwise:self.clockwise];
-    CGContextSetStrokeColorWithColor(context, [_trackTintColor CGColor]);
-    [trackPath setLineWidth:kTrackLineWidth];
-    [trackPath stroke];
-
-    // Draw progress
-    CGFloat progressRadius = (self.frame.size.width - 2*kProgressLineWidth + 1) / 2;
-    CGFloat progressEndAngle = _startAngle + (360 * _progress);
-    UIBezierPath *progressPath = [UIBezierPath bezierPathWithArcCenter:centerPointInView
-                                                             radius:progressRadius
-                                                         startAngle:DEGREES_TO_RADIANS(_startAngle)
-                                                           endAngle:DEGREES_TO_RADIANS(progressEndAngle)
-                                                          clockwise:self.clockwise];
-    CGContextSetStrokeColorWithColor(context, [_trackTintColor CGColor]);
-    [progressPath setLineWidth:kProgressLineWidth];
-    [progressPath stroke];
+    _trackLayer.path = trackPath.CGPath;
+    _progressLayer.path = trackPath.CGPath;
+    
+#warning CODE REVIEW - Refactor these into setter overrides, shouldn't belong here
+    [_trackLayer setLineWidth:kTrackLineWidth];
+    [_trackLayer setStrokeColor:[_trackTintColor CGColor]];
+    [_trackLayer setFillColor:[[UIColor clearColor] CGColor]];
+    [_progressLayer setLineWidth:kProgressLineWidth];
+    [_progressLayer setStrokeColor:[_progressTintColor CGColor]];
+    [_progressLayer setFillColor:[[UIColor clearColor] CGColor]];
+    
+    [self updateLabels];
 }
 
-- (void)layoutSubviews
+#pragma mark - UI Update/Drawing/Animation
+
+- (void)updateLabels
 {
-    [super layoutSubviews];
-    [_progressLabel sizeToFit];
-    [_unitsLabel sizeToFit];
+    _percentLabel.hidden = (_style == RSRadialProgressViewStyleValue);
+    _unitsLabel.hidden = (_style == RSRadialProgressViewStylePercent);
 }
 
 #pragma mark - Property Overrides
@@ -195,12 +198,28 @@ CGSize maximumLabelRectSize;
 
 - (void)setProgress:(float)progress animated:(BOOL)animated
 {
-    _progress = progress;
+    if (animated)
+    {
+        [_progressLayer setValue:@(progress) forKeyPath:@"strokeEnd"];
+    }
+    else
+    {
+        [CATransaction begin];
+        [CATransaction setDisableActions:YES];
+        [_progressLayer setValue:@(progress) forKeyPath:@"strokeEnd"];
+        [CATransaction commit];
+    }
     if (_style == RSRadialProgressViewStylePercent)
     {
-        _progressLabel.text = [NSString stringWithFormat:@"%.2d", (int)(_progress * 100)];
-        [self setNeedsDisplay];
+        _progressLabel.text = [NSString stringWithFormat:@"%.2d", (int)(progress * 100)];
     }
+    _progress = progress;
+}
+
+- (void)setStyle:(RSRadialProgressViewStyle)style
+{
+    _style = style;
+    [self updateLabels];
 }
 
 @end
