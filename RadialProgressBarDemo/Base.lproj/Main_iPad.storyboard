@@ -52,6 +52,9 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="lmR-9b-a7h"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="didChangeValueForUnitSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="vnD-i1-cjt"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display In Units" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Cp-o5-OhR">
                                         <rect key="frame" x="77" y="25" width="135" height="21"/>
@@ -68,6 +71,9 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="xkn-oD-CGs"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="didChangeValueForAnimateSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="YNY-F6-FXt"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animate Updates" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDl-6T-eHz">
                                         <rect key="frame" x="77" y="64" width="135" height="21"/>
@@ -113,8 +119,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="animateSwitch" destination="WyA-6A-YMC" id="TBF-6v-DMq"/>
+                        <outlet property="instructionLabel" destination="ORy-EL-8v6" id="q6a-2M-Fdk"/>
                         <outlet property="progressSlider" destination="L5E-Fy-4P8" id="Plf-4w-Sh2"/>
                         <outlet property="radialProgressView" destination="i3m-mR-XCW" id="fkD-qC-0sL"/>
+                        <outlet property="unitSwitch" destination="Lyf-T9-H19" id="lLY-nj-TBi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

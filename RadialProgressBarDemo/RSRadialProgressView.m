@@ -198,6 +198,11 @@ CGSize maximumLabelRectSize;
 
 - (void)setProgress:(float)progress animated:(BOOL)animated
 {
+    [self setProgress:progress valueText:nil animated:animated];
+}
+
+- (void)setProgress:(float)progress valueText:(NSString *)text animated:(BOOL)animated
+{
     if (animated)
     {
         [_progressLayer setValue:@(progress) forKeyPath:@"strokeEnd"];
@@ -212,6 +217,10 @@ CGSize maximumLabelRectSize;
     if (_style == RSRadialProgressViewStylePercent)
     {
         _progressLabel.text = [NSString stringWithFormat:@"%.2d", (int)(progress * 100)];
+    }
+    else
+    {
+        _progressLabel.text = text;
     }
     _progress = progress;
 }

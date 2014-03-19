@@ -67,7 +67,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="didChangeValueForAnimateSwitch:" destination="vXZ-lx-hvc" eventType="valueChanged" id="8Dv-g6-u1v"/>
-                                    <action selector="didChangeValueForUnitSwitch:" destination="vXZ-lx-hvc" eventType="valueChanged" id="MJH-f1-kWr"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animate Updates" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3C-He-1NG">

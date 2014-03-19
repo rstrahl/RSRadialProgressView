@@ -28,11 +28,13 @@
     [super viewDidLoad];
     self.radialProgressView.progress = 0.0f;
     self.progressSlider.minimumValue = 0.0f;
-    self.progressSlider.maximumValue = 1.0f;
+    self.progressSlider.maximumValue = 25.0f;
+    self.progressSlider.value = 12.5f;
     self.progressSlider.continuous = YES;
-    [self.radialProgressView setProgress:self.progressSlider.value];
     self.radialProgressView.progressLabel.font = [UIFont boldSystemFontOfSize:32.0f];
     self.unitSwitch.on = (self.radialProgressView.style == RSRadialProgressViewStyleValue);
+    self.animateSwitch.on = NO;
+    [self updateRadialProgressView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,25 +43,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)updateRadialProgressView
+{
+    float progressValue = (self.progressSlider.value / self.progressSlider.maximumValue);
+    NSString *progressText = [NSString stringWithFormat:@"%.0f", self.progressSlider.value];
+    [self.radialProgressView setProgress:progressValue valueText:progressText animated:!self.progressSlider.continuous];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)didChangeValueForProgressSlider:(id)sender
 {
-    UISlider *slider = (UISlider *)sender;
-    float progressValue = slider.value;
-    [self.radialProgressView setProgress:progressValue animated:!slider.continuous];
+    [self updateRadialProgressView];
 }
 
 - (IBAction)didChangeValueForUnitSwitch:(id)sender
 {
     UISwitch *aSwitch = (UISwitch *)sender;
     _radialProgressView.style = (aSwitch.on) ? RSRadialProgressViewStyleValue : RSRadialProgressViewStylePercent;
+    [self updateRadialProgressView];
 }
 
 - (IBAction)didChangeValueForAnimateSwitch:(id)sender
 {
     UISwitch *aSwitch = (UISwitch *)sender;
     _progressSlider.continuous = !aSwitch.on;
+    [self updateRadialProgressView];
 }
 
 @end

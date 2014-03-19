@@ -33,5 +33,6 @@ typedef NS_ENUM(NSUInteger, RSRadialProgressViewStyle)
 @property (assign, nonatomic) RSRadialProgressViewStyle style;
 
 - (void)setProgress:(float)progress animated:(BOOL)animated;
+- (void)setProgress:(float)progress valueText:(NSString *)text animated:(BOOL)animated;
 
 @end
