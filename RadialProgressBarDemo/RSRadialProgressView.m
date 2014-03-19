@@ -118,7 +118,6 @@ CGSize maximumLabelRectSize;
     [_percentLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_percentLabel setAdjustsFontSizeToFitWidth:YES];
     [_percentLabel setTextAlignment:NSTextAlignmentCenter];
-    _percentLabel.hidden = (_style == RSRadialProgressViewStyleValue);
     [_labelsView addSubview:_percentLabel];
     [_labelsView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[_progressLabel]-0-[_percentLabel]"
                                                                         options:0
@@ -138,7 +137,6 @@ CGSize maximumLabelRectSize;
     [_unitsLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_unitsLabel setAdjustsFontSizeToFitWidth:YES];
     [_unitsLabel setTextAlignment:NSTextAlignmentCenter];
-    _unitsLabel.hidden = (_style == RSRadialProgressViewStylePercent);
     [_labelsView addSubview:_unitsLabel];
     [_labelsView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_progressLabel]-0-[_unitsLabel]"
                                                                         options:0
@@ -179,17 +177,16 @@ CGSize maximumLabelRectSize;
     [_progressLayer setLineWidth:kProgressLineWidth];
     [_progressLayer setStrokeColor:[_progressTintColor CGColor]];
     [_progressLayer setFillColor:[[UIColor clearColor] CGColor]];
+    
+    [self updateLabels];
 }
 
-#pragma mark - Drawing/Animation
+#pragma mark - UI Update/Drawing/Animation
 
-- (void)startProgressTrackAnimationFromValue:(CGFloat)fromValue toValue:(CGFloat)toValue duration:(CGFloat)duration
+- (void)updateLabels
 {
-    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    pathAnimation.duration = duration;
-    pathAnimation.fromValue = @(fromValue);
-    pathAnimation.toValue = @(toValue);
-    [_progressLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
+    _percentLabel.hidden = (_style == RSRadialProgressViewStyleValue);
+    _unitsLabel.hidden = (_style == RSRadialProgressViewStylePercent);
 }
 
 #pragma mark - Property Overrides
@@ -203,7 +200,7 @@ CGSize maximumLabelRectSize;
 {
     if (animated)
     {
-        [self startProgressTrackAnimationFromValue:_progress toValue:progress duration:1.0f];
+        [_progressLayer setValue:@(progress) forKeyPath:@"strokeEnd"];
     }
     else
     {
@@ -217,6 +214,12 @@ CGSize maximumLabelRectSize;
         _progressLabel.text = [NSString stringWithFormat:@"%.2d", (int)(progress * 100)];
     }
     _progress = progress;
+}
+
+- (void)setStyle:(RSRadialProgressViewStyle)style
+{
+    _style = style;
+    [self updateLabels];
 }
 
 @end

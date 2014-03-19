@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum
+typedef NS_ENUM(NSUInteger, RSRadialProgressViewStyle)
 {
     RSRadialProgressViewStylePercent,
     RSRadialProgressViewStyleValue
-} RSRadialProgressViewStyle;
+};
 
 #define DEGREES_TO_RADIANS(degrees)  ((M_PI * degrees) / 180)
 
