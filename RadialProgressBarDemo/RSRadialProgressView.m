@@ -47,6 +47,9 @@ CGSize maximumLabelRectSize;
     
     _trackLineWidth = 1.0f;
     _progressLineWidth = 4.0f;
+    _checkmarkLineWidth = 4.0f;
+    
+    [self drawCompletionCheckmark];
     
     // Add track/progress layers
     _trackLayer = [CAShapeLayer layer];
@@ -127,6 +130,8 @@ CGSize maximumLabelRectSize;
     [_labelsView addSubview:_unitsLabel];
 }
 
+#pragma mark - UI Update/Drawing/Animation
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -182,12 +187,29 @@ CGSize maximumLabelRectSize;
     _unitsLabel.frame = unitsLabelFrame;
 }
 
-#pragma mark - UI Update/Drawing/Animation
-
 - (void)updateLabels
 {
     _percentLabel.hidden = (_style == RSRadialProgressViewStyleValue);
     _unitsLabel.hidden = (_style == RSRadialProgressViewStylePercent);
+}
+
+- (void)drawCompletionCheckmark
+{
+    _checkmarkLayer = [CAShapeLayer layer];
+    UIBezierPath *checkmarkPath = [UIBezierPath bezierPath];
+    
+    _checkmarkLayer.lineWidth = _checkmarkLineWidth;
+    _checkmarkLayer.fillColor = [[UIColor clearColor] CGColor];
+    _checkmarkLayer.lineCap = kCALineCapRound;
+    _checkmarkLayer.lineJoin = kCALineJoinRound;
+    _checkmarkLayer.strokeColor = [_progressTintColor CGColor];
+    
+    [checkmarkPath moveToPoint:CGPointMake((self.frame.size.width / 4), (self.frame.size.height / 2))];
+    [checkmarkPath addLineToPoint:CGPointMake((self.frame.size.width / 2), (self.frame.size.height * 0.75))];
+    [checkmarkPath addLineToPoint:CGPointMake((self.frame.size.width * 0.65), (self.frame.size.height * 0.3))];
+    
+    _checkmarkLayer.path = [checkmarkPath CGPath];
+    [self.layer addSublayer:_checkmarkLayer];
 }
 
 #pragma mark - Property Overrides
@@ -228,6 +250,8 @@ CGSize maximumLabelRectSize;
 
 - (void)setProgress:(float)progress valueText:(NSString *)text animated:(BOOL)animated
 {
+    _progressLabel.hidden = (BOOL)progress;
+    [_checkmarkLayer setValue:@((BOOL)progress) forKey:@"opacity"];
     if (animated)
     {
         [_progressLayer setValue:@(progress) forKeyPath:@"strokeEnd"];
@@ -239,14 +263,18 @@ CGSize maximumLabelRectSize;
         [_progressLayer setValue:@(progress) forKeyPath:@"strokeEnd"];
         [CATransaction commit];
     }
+    
     if (_style == RSRadialProgressViewStylePercent)
     {
         _progressLabel.text = [NSString stringWithFormat:@"%.2d", (int)(progress * 100)];
+        _percentLabel.hidden = (BOOL)progress;
     }
     else
     {
         _progressLabel.text = text;
+        _unitsLabel.hidden = (BOOL)progress;
     }
+    
     [self layoutProgressLabel];
     _progress = progress;
 }
