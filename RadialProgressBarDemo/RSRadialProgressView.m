@@ -41,6 +41,7 @@ CGSize maximumLabelRectSize;
 - (void)setupDefaults
 {
     _clockwise = YES;
+    _displaysCompletionCheckmark = NO;
     _startAngle = 270;
     _progress = 0;
     _progressTintColor = _trackTintColor = [UIColor blackColor];
@@ -204,11 +205,12 @@ CGSize maximumLabelRectSize;
     _checkmarkLayer.lineJoin = kCALineJoinRound;
     _checkmarkLayer.strokeColor = [_progressTintColor CGColor];
     
-    [checkmarkPath moveToPoint:CGPointMake((self.frame.size.width / 4), (self.frame.size.height / 2))];
+    [checkmarkPath moveToPoint:CGPointMake((self.frame.size.width * 0.3), (self.frame.size.height * 0.55))];
     [checkmarkPath addLineToPoint:CGPointMake((self.frame.size.width / 2), (self.frame.size.height * 0.75))];
     [checkmarkPath addLineToPoint:CGPointMake((self.frame.size.width * 0.65), (self.frame.size.height * 0.3))];
     
     _checkmarkLayer.path = [checkmarkPath CGPath];
+    _checkmarkLayer.opacity = 0.0f;
     [self.layer addSublayer:_checkmarkLayer];
 }
 
@@ -250,8 +252,11 @@ CGSize maximumLabelRectSize;
 
 - (void)setProgress:(float)progress valueText:(NSString *)text animated:(BOOL)animated
 {
-    _progressLabel.hidden = (BOOL)progress;
-    [_checkmarkLayer setValue:@((BOOL)progress) forKey:@"opacity"];
+    if (_displaysCompletionCheckmark)
+    {
+        _progressLabel.hidden = (BOOL)progress;
+        [_checkmarkLayer setValue:@((BOOL)progress) forKey:@"opacity"];
+    }
     if (animated)
     {
         [_progressLayer setValue:@(progress) forKeyPath:@"strokeEnd"];
@@ -266,13 +271,13 @@ CGSize maximumLabelRectSize;
     
     if (_style == RSRadialProgressViewStylePercent)
     {
-        _progressLabel.text = [NSString stringWithFormat:@"%.2d", (int)(progress * 100)];
-        _percentLabel.hidden = (BOOL)progress;
+        _progressLabel.text = [NSString stringWithFormat:@"%d", (int)(progress * 100)];
+        _percentLabel.hidden = (_displaysCompletionCheckmark) ? (BOOL)progress : NO;
     }
     else
     {
         _progressLabel.text = text;
-        _unitsLabel.hidden = (BOOL)progress;
+        _unitsLabel.hidden = (_displaysCompletionCheckmark) ? (BOOL)progress : NO;
     }
     
     [self layoutProgressLabel];

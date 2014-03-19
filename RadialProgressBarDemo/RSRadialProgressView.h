@@ -30,6 +30,7 @@ typedef NS_ENUM(NSUInteger, RSRadialProgressViewStyle)
 @property (strong, nonatomic) UIView *labelsView;
 @property (assign, nonatomic) float progress;
 @property (assign, nonatomic) BOOL clockwise;
+@property (assign, nonatomic) BOOL displaysCompletionCheckmark;
 @property (assign, nonatomic) CGFloat startAngle;
 @property (assign, nonatomic) CGFloat trackLineWidth;
 @property (assign, nonatomic) CGFloat progressLineWidth;
