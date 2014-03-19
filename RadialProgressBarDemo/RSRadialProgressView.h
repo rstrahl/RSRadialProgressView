@@ -25,6 +25,7 @@ typedef NS_ENUM(NSUInteger, RSRadialProgressViewStyle)
 @property (strong, nonatomic) UILabel *percentLabel;
 @property (strong, nonatomic) UILabel *unitsLabel;
 @property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) UIColor *checkmarkTintColor;
 @property (strong, nonatomic) UIColor *progressTintColor;
 @property (strong, nonatomic) UIColor *trackTintColor;
 @property (strong, nonatomic) UIView *labelsView;

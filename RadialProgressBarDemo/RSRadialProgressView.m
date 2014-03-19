@@ -216,6 +216,12 @@ CGSize maximumLabelRectSize;
 
 #pragma mark - Property Overrides
 
+- (void)setCheckmarkLineWidth:(CGFloat)checkmarkLineWidth
+{
+    _checkmarkLineWidth = checkmarkLineWidth;
+    [_checkmarkLayer setLineWidth:_checkmarkLineWidth];
+}
+
 - (void)setProgressLineWidth:(CGFloat)progressLineWidth
 {
     _progressLineWidth = progressLineWidth;
@@ -232,6 +238,12 @@ CGSize maximumLabelRectSize;
 {
     _progressTintColor = progressTintColor;
     [_progressLayer setStrokeColor:[_progressTintColor CGColor]];
+}
+
+- (void)setCheckmarkTintColor:(UIColor *)checkmarkTintColor
+{
+    _checkmarkTintColor = checkmarkTintColor;
+    [_checkmarkLayer setStrokeColor:[_checkmarkTintColor CGColor]];
 }
 
 - (void)setTrackTintColor:(UIColor *)trackTintColor
