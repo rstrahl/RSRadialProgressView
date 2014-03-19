@@ -83,15 +83,15 @@ CGSize maximumLabelRectSize;
                                                                         relatedBy:NSLayoutRelationEqual
                                                                            toItem:self
                                                                         attribute:NSLayoutAttributeHeight
-                                                                       multiplier:0.70
-                                                                         constant:-_progressLineWidth];
+                                                                       multiplier:1.0
+                                                                         constant:0];
     NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:_labelsView
                                                                         attribute:NSLayoutAttributeWidth
                                                                         relatedBy:NSLayoutRelationEqual
                                                                            toItem:self
                                                                         attribute:NSLayoutAttributeWidth
-                                                                       multiplier:0.70
-                                                                         constant:-_progressLineWidth];
+                                                                       multiplier:1.0
+                                                                         constant:0];
     [self addConstraint:centerConstraintX];
     [self addConstraint:centerConstraintY];
     [self addConstraint:heightConstraint];
@@ -99,23 +99,8 @@ CGSize maximumLabelRectSize;
     
     // Add progress label
     _progressLabel = [[UILabel alloc] init];
-    [_progressLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_progressLabel setTextAlignment:NSTextAlignmentCenter];
     [_labelsView addSubview:_progressLabel];
-    [_labelsView addConstraint:[NSLayoutConstraint constraintWithItem:_progressLabel
-                                                            attribute:NSLayoutAttributeCenterX
-                                                            relatedBy:NSLayoutRelationEqual
-                                                               toItem:_labelsView
-                                                            attribute:NSLayoutAttributeCenterX
-                                                           multiplier:1
-                                                             constant:0]];
-    [_labelsView addConstraint:[NSLayoutConstraint constraintWithItem:_progressLabel
-                                                            attribute:NSLayoutAttributeCenterY
-                                                            relatedBy:NSLayoutRelationEqual
-                                                               toItem:_labelsView
-                                                            attribute:NSLayoutAttributeCenterY
-                                                           multiplier:1
-                                                             constant:0]];
     
     // Add percentage symbol label
     _percentLabel = [[UILabel alloc] init];
@@ -138,31 +123,15 @@ CGSize maximumLabelRectSize;
     // Add units label
     _unitsLabel = [[UILabel alloc] init];
     _unitsLabel.text = @"UNITS";
-    [_unitsLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_unitsLabel setTextAlignment:NSTextAlignmentCenter];
     [_labelsView addSubview:_unitsLabel];
-    [_labelsView addConstraint:[NSLayoutConstraint constraintWithItem:_unitsLabel
-                                                            attribute:NSLayoutAttributeTop
-                                                            relatedBy:NSLayoutRelationEqual
-                                                               toItem:_progressLabel
-                                                            attribute:NSLayoutAttributeBottom
-                                                           multiplier:1.0
-                                                             constant:(_progressLabel.font.descender)]];
-    [_labelsView addConstraint:[NSLayoutConstraint constraintWithItem:_unitsLabel
-                                                            attribute:NSLayoutAttributeCenterX
-                                                            relatedBy:NSLayoutRelationEqual
-                                                               toItem:_progressLabel
-                                                            attribute:NSLayoutAttributeCenterX
-                                                           multiplier:1
-                                                             constant:0]];
-    
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [_progressLabel sizeToFit];
-    [_unitsLabel sizeToFit];
+    
+    [self layoutLabels];
     
     // Re-calculate the track/progress paths
     CGPoint centerPointInView = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
@@ -184,6 +153,33 @@ CGSize maximumLabelRectSize;
                                                              clockwise:self.clockwise];
     _progressLayer.path = progressPath.CGPath;
     [self updateLabels];
+}
+
+- (void)layoutLabels
+{
+    [_percentLabel sizeToFit];
+    [self layoutProgressLabel];
+    [self layoutUnitsLabel];
+}
+
+- (void)layoutProgressLabel
+{
+    // Progress Label
+    [_progressLabel sizeToFit];
+    CGRect progressLabelFrame = _progressLabel.frame;
+    progressLabelFrame.origin.x = (_progressLabel.superview.frame.size.width / 2) - (progressLabelFrame.size.width / 2);
+    progressLabelFrame.origin.y = (_progressLabel.superview.frame.size.height / 2) - (progressLabelFrame.size.height / 2);
+    _progressLabel.frame = progressLabelFrame;
+}
+
+- (void)layoutUnitsLabel
+{
+    // Units Label
+    [_unitsLabel sizeToFit];
+    CGRect unitsLabelFrame = _unitsLabel.frame;
+    unitsLabelFrame.origin.x = (_unitsLabel.superview.frame.size.width / 2) - (unitsLabelFrame.size.width / 2);
+    unitsLabelFrame.origin.y = (_progressLabel.frame.origin.y + _progressLabel.frame.size.height) + (_progressLabel.font.descender);
+    _unitsLabel.frame = unitsLabelFrame;
 }
 
 #pragma mark - UI Update/Drawing/Animation
@@ -251,6 +247,7 @@ CGSize maximumLabelRectSize;
     {
         _progressLabel.text = text;
     }
+    [self layoutProgressLabel];
     _progress = progress;
 }
 
