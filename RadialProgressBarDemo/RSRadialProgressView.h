@@ -20,6 +20,7 @@ typedef NS_ENUM(NSUInteger, RSRadialProgressViewStyle)
 
 @property (strong, nonatomic) CAShapeLayer *trackLayer;
 @property (strong, nonatomic) CAShapeLayer *progressLayer;
+@property (strong, nonatomic) CAShapeLayer *checkmarkLayer;
 @property (strong, nonatomic) UILabel *progressLabel;
 @property (strong, nonatomic) UILabel *percentLabel;
 @property (strong, nonatomic) UILabel *unitsLabel;
@@ -29,9 +30,11 @@ typedef NS_ENUM(NSUInteger, RSRadialProgressViewStyle)
 @property (strong, nonatomic) UIView *labelsView;
 @property (assign, nonatomic) float progress;
 @property (assign, nonatomic) BOOL clockwise;
+@property (assign, nonatomic) BOOL displaysCompletionCheckmark;
 @property (assign, nonatomic) CGFloat startAngle;
 @property (assign, nonatomic) CGFloat trackLineWidth;
 @property (assign, nonatomic) CGFloat progressLineWidth;
+@property (assign, nonatomic) CGFloat checkmarkLineWidth;
 @property (assign, nonatomic) RSRadialProgressViewStyle style;
 
 - (void)setProgress:(float)progress animated:(BOOL)animated;
