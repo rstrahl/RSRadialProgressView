@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *instructionLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *unitSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *animateSwitch;
+
 - (IBAction)didChangeValueForUnitSwitch:(id)sender;
 - (IBAction)didChangeValueForAnimateSwitch:(id)sender;
 
@@ -27,11 +28,12 @@
 {
     [super viewDidLoad];
     self.radialProgressView.progress = 0.0f;
+    self.radialProgressView.progressLineWidth = 12.0f;
     self.progressSlider.minimumValue = 0.0f;
     self.progressSlider.maximumValue = 25.0f;
     self.progressSlider.value = 12.5f;
     self.progressSlider.continuous = YES;
-    self.radialProgressView.progressLabel.font = [UIFont boldSystemFontOfSize:32.0f];
+    self.radialProgressView.progressLabel.font = [UIFont boldSystemFontOfSize:48.0f];
     self.unitSwitch.on = (self.radialProgressView.style == RSRadialProgressViewStyleValue);
     self.animateSwitch.on = NO;
     [self updateRadialProgressView];
