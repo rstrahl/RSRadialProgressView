@@ -266,8 +266,8 @@ CGSize maximumLabelRectSize;
 {
     if (_displaysCompletionCheckmark)
     {
-        _progressLabel.hidden = (BOOL)progress;
-        [_checkmarkLayer setValue:@((BOOL)progress) forKey:@"opacity"];
+        _progressLabel.hidden = floor(progress);
+        [_checkmarkLayer setValue:@(floor(progress)) forKey:@"opacity"];
     }
     if (animated)
     {
@@ -284,12 +284,12 @@ CGSize maximumLabelRectSize;
     if (_style == RSRadialProgressViewStylePercent)
     {
         _progressLabel.text = [NSString stringWithFormat:@"%d", (int)(progress * 100)];
-        _percentLabel.hidden = (_displaysCompletionCheckmark) ? (BOOL)progress : NO;
+        _percentLabel.hidden = (_displaysCompletionCheckmark) ? floor(progress) : NO;
     }
     else
     {
         _progressLabel.text = text;
-        _unitsLabel.hidden = (_displaysCompletionCheckmark) ? (BOOL)progress : NO;
+        _unitsLabel.hidden = (_displaysCompletionCheckmark) ? floor(progress) : NO;
     }
     
     [self layoutProgressLabel];
