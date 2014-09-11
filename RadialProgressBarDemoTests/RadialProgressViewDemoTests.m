@@ -1,6 +1,6 @@
 //
-//  RadialProgressBarDemoTests.m
-//  RadialProgressBarDemoTests
+//  RadialProgressViewDemoTests.m
+//  RadialProgressViewDemoTests
 //
 //  Created by Rudi Strahl on 2014-03-12.
 //  Copyright (c) 2014 Rudi Strahl. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface RadialProgressBarDemoTests : XCTestCase
+@interface RadialProgressViewDemoTests : XCTestCase
 
 @end
 
-@implementation RadialProgressBarDemoTests
+@implementation RadialProgressViewDemoTests
 
 - (void)setUp
 {

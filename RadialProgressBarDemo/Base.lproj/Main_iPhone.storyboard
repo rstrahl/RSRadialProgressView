@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -45,23 +45,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q4j-EU-aAb">
-                                <rect key="frame" x="20" y="396" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="didChangeValueForUnitSwitch:" destination="vXZ-lx-hvc" eventType="valueChanged" id="f4e-8r-2Sj"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display In Units" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDC-Tr-Q2t">
-                                <rect key="frame" x="77" y="401" width="223" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="223" id="Kth-Ge-Bcb"/>
-                                    <constraint firstAttribute="height" constant="21" id="YOU-AH-554"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rlE-bs-ZBM">
                                 <rect key="frame" x="20" y="435" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -82,21 +65,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Q4j-EU-aAb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="CG5-JH-rL6"/>
                             <constraint firstAttribute="trailing" secondItem="cAe-4H-pRu" secondAttribute="trailing" constant="20" id="CM7-ks-5bp"/>
                             <constraint firstItem="Wrn-ux-ggQ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="84" id="MsZ-6Z-ud7"/>
                             <constraint firstAttribute="centerX" secondItem="cAe-4H-pRu" secondAttribute="centerX" id="Uql-PF-jhL"/>
                             <constraint firstAttribute="centerX" secondItem="Wrn-ux-ggQ" secondAttribute="centerX" id="XbD-0b-eOL"/>
                             <constraint firstAttribute="trailing" secondItem="3Kb-YX-oFu" secondAttribute="trailing" constant="20" id="YI2-dL-taL"/>
-                            <constraint firstItem="lDC-Tr-Q2t" firstAttribute="leading" secondItem="Q4j-EU-aAb" secondAttribute="trailing" constant="8" id="YlU-rb-ogm"/>
-                            <constraint firstItem="Q4j-EU-aAb" firstAttribute="centerY" secondItem="lDC-Tr-Q2t" secondAttribute="centerY" id="Yyl-6O-4a4"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="cAe-4H-pRu" secondAttribute="bottom" constant="20" id="jeu-6f-Z9q"/>
                             <constraint firstItem="cAe-4H-pRu" firstAttribute="top" secondItem="3Kb-YX-oFu" secondAttribute="bottom" constant="8" id="lqx-EA-E7q"/>
                             <constraint firstItem="3Kb-YX-oFu" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="nOo-ui-moY"/>
                             <constraint firstItem="rlE-bs-ZBM" firstAttribute="centerY" secondItem="x3C-He-1NG" secondAttribute="centerY" id="o6O-gK-ENR"/>
                             <constraint firstItem="rlE-bs-ZBM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="poO-xj-EzG"/>
                             <constraint firstItem="cAe-4H-pRu" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="rMb-RA-8ck"/>
-                            <constraint firstItem="rlE-bs-ZBM" firstAttribute="top" secondItem="Q4j-EU-aAb" secondAttribute="bottom" constant="8" id="rsA-8Z-Kn0"/>
                             <constraint firstItem="3Kb-YX-oFu" firstAttribute="top" secondItem="rlE-bs-ZBM" secondAttribute="bottom" constant="23" id="u2u-UH-rh9"/>
                             <constraint firstItem="x3C-He-1NG" firstAttribute="leading" secondItem="rlE-bs-ZBM" secondAttribute="trailing" constant="8" id="uV2-Dd-I4I"/>
                         </constraints>
@@ -106,7 +85,6 @@
                         <outlet property="instructionLabel" destination="3Kb-YX-oFu" id="Huu-rV-r4v"/>
                         <outlet property="progressSlider" destination="cAe-4H-pRu" id="ON8-pX-uV2"/>
                         <outlet property="radialProgressView" destination="Wrn-ux-ggQ" id="cLn-ZF-p8t"/>
-                        <outlet property="unitSwitch" destination="Q4j-EU-aAb" id="vkV-L8-twa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

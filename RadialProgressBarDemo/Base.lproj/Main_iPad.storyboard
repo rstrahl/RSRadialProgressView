@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -46,26 +46,7 @@
                                 <rect key="frame" x="268" y="825" width="232" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lyf-T9-H19">
-                                        <rect key="frame" x="20" y="20" width="51" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="31" id="lmR-9b-a7h"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="didChangeValueForUnitSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="vnD-i1-cjt"/>
-                                        </connections>
-                                    </switch>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display In Units" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Cp-o5-OhR">
-                                        <rect key="frame" x="77" y="25" width="135" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="rSR-U7-epo"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WyA-6A-YMC">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WyA-6A-YMC">
                                         <rect key="frame" x="20" y="59" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
@@ -75,7 +56,7 @@
                                             <action selector="didChangeValueForAnimateSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="YNY-F6-FXt"/>
                                         </connections>
                                     </switch>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animate Updates" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDl-6T-eHz">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Animate Updates" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDl-6T-eHz">
                                         <rect key="frame" x="77" y="64" width="135" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
@@ -87,16 +68,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="5Cp-o5-OhR" firstAttribute="centerY" secondItem="Lyf-T9-H19" secondAttribute="centerY" id="7NH-2i-Lh4"/>
-                                    <constraint firstItem="Lyf-T9-H19" firstAttribute="top" secondItem="m7F-Ui-XJF" secondAttribute="top" constant="20" id="CSH-gF-ulJ"/>
                                     <constraint firstItem="mDl-6T-eHz" firstAttribute="leading" secondItem="WyA-6A-YMC" secondAttribute="trailing" constant="8" id="LKu-MR-Etg"/>
-                                    <constraint firstAttribute="trailing" secondItem="5Cp-o5-OhR" secondAttribute="trailing" constant="20" id="Nwg-o3-krt"/>
-                                    <constraint firstItem="Lyf-T9-H19" firstAttribute="leading" secondItem="m7F-Ui-XJF" secondAttribute="leading" constant="20" id="PfF-ca-gzl"/>
-                                    <constraint firstItem="5Cp-o5-OhR" firstAttribute="leading" secondItem="Lyf-T9-H19" secondAttribute="trailing" constant="8" id="UDD-4Z-Q6j"/>
                                     <constraint firstAttribute="trailing" secondItem="mDl-6T-eHz" secondAttribute="trailing" constant="20" id="ZV2-gv-VF8"/>
                                     <constraint firstItem="mDl-6T-eHz" firstAttribute="centerY" secondItem="WyA-6A-YMC" secondAttribute="centerY" id="ZbJ-dH-Q0I"/>
-                                    <constraint firstItem="WyA-6A-YMC" firstAttribute="top" secondItem="Lyf-T9-H19" secondAttribute="bottom" constant="8" id="aYG-F2-egt"/>
-                                    <constraint firstItem="WyA-6A-YMC" firstAttribute="top" secondItem="Lyf-T9-H19" secondAttribute="bottom" constant="8" id="eeh-5h-psX"/>
                                     <constraint firstItem="WyA-6A-YMC" firstAttribute="leading" secondItem="m7F-Ui-XJF" secondAttribute="leading" constant="20" id="kVn-xu-7eM"/>
                                     <constraint firstAttribute="height" constant="112" id="oKo-ah-KJV"/>
                                     <constraint firstAttribute="width" constant="232" id="uqH-hw-Zhm"/>
@@ -123,7 +97,6 @@
                         <outlet property="instructionLabel" destination="ORy-EL-8v6" id="q6a-2M-Fdk"/>
                         <outlet property="progressSlider" destination="L5E-Fy-4P8" id="Plf-4w-Sh2"/>
                         <outlet property="radialProgressView" destination="i3m-mR-XCW" id="fkD-qC-0sL"/>
-                        <outlet property="unitSwitch" destination="Lyf-T9-H19" id="lLY-nj-TBi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
